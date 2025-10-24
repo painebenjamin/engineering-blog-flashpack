@@ -47,12 +47,9 @@ By the time we loop back, that first stream is done and ready for more. It’s a
 
 ## 4. Rebuild parameters and buffers
 
-Once the data’s on the GPU, FlashPack reconstructs each tensor as a view into the flat memory block, and creates new `nn.Parameter` instances with direct references to the exact bytes you loaded. The model is immediately ready to run.
+Once the data’s on the GPU, FlashPack reconstructs each tensor as a view into the flat memory block and creates new `nn.Parameter` and buffer instances with direct references to the exact bytes you loaded. There are no copies and no moves needed; just a new pointer and the model is immediately ready to run.
 
-The Result: **3–6× Faster Loads**
-
-When benchmarked, FlashPack consistently delivers 3–6× faster checkpoint loading compared to existing methods.
-Even without GDS or specialized hardware, it dramatically cuts startup and reload times for large models.
+The Result: **2–6× faster checkpoint loading** compared to existing methods on all tested conditions and machines. Even without GDS or specialized hardware, it dramatically cuts startup and reload times for small and large models alike.
 
 # Benchmarks
 
